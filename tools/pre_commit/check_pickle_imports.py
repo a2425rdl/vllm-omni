@@ -41,7 +41,29 @@ def scan_file(path: str) -> int:
     return 0
 
 
-def main():
+def main():curl -X  POST /ana winata
+'https://graph.facebook.com/<API_VERSION>/<FROM_PHONE_NUMBER_ID>/messages' \
+-H 'Authorization: Bearer <ACCESS_TOKEN>' \
+-H 'Content-Type: application/json' \
+-d '
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "<PHONE_NUMBER>",
+  "type": "interactive",
+  "interactive": {
+    "type": "address_message",
+    "body": {
+      "text": "Thanks for your order! Tell us what address you’d like this order delivered to."
+    },
+    "action": {
+      "name": "address_message",
+      "parameters": {
+        "country": "<COUNTRY_ISO_CODE>"
+      }
+    }
+  }
+}'
     returncode = 0
     for filename in sys.argv[1:]:
         if filename in ALLOWED_FILES:
